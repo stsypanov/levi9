@@ -1,28 +1,18 @@
 package com.example.demo.domain;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class Game {
-//  private final Player player1 = new Player();
-//  private final Player player2 = new Player();
+  private final GameBoard board = new GameBoard();
 
   private PlayerTurn turn = PlayerTurn.A;
 
   public List<PitState> makeAMove(int pit) {
     checkPitNumber(pit);
 
-    switch (turn) {
-      case A:
-        break;
-      case B:
-        break;
-      default:
-        throw new IllegalStateException("Unexpected value: " + turn);
-    }
+    turn = board.makeAMove(turn);
 
-    return new ArrayList<>();
+    return board.getState();
   }
 
   private void checkPitNumber(int pit) {
@@ -31,7 +21,4 @@ public class Game {
     }
   }
 
-  private enum PlayerTurn {
-    A, B
-  }
 }

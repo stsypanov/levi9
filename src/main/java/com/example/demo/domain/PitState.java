@@ -5,8 +5,8 @@ import lombok.Data;
 
 import java.util.Map;
 
-@Data
+@Data(staticConstructor = "of")
 public class PitState {
-  private int pitId;
-  private int stoneCount;
+  private final int pitId;
+  private final int stoneCount;
 }
