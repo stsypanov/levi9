@@ -18,7 +18,7 @@ public class GameBoard {
     pits.put(pitNumber++, new Pit());
     pits.put(pitNumber++, new Pit());
     pits.put(pitNumber++, new Pit());
-    pits.put(pitNumber++, new Kalah(Player.A));
+    pits.put(pitNumber++, Kalah.of(Player.A));
 
     pits.put(pitNumber++, new Pit());
     pits.put(pitNumber++, new Pit());
@@ -26,7 +26,7 @@ public class GameBoard {
     pits.put(pitNumber++, new Pit());
     pits.put(pitNumber++, new Pit());
     pits.put(pitNumber++, new Pit());
-    pits.put(pitNumber, new Kalah(Player.B));
+    pits.put(pitNumber, Kalah.of(Player.B));
   }
 
   public Player sow(Player player, int pitIndex) {
@@ -35,6 +35,8 @@ public class GameBoard {
     int stones = putAllStonesAwayFromPit(pitIndex);
 
     int index = pitIndex + 1;
+
+    boolean lastStonePutIntoKalah = false;
 
     while (stones > 0) {
       HasStones pit = pits.get(index);
@@ -45,9 +47,21 @@ public class GameBoard {
         index = 1;
       }
       stones--;
+      lastStonePutIntoKalah = pit.isKalah();
     }
 
-    return Player.B;
+    if (lastStonePutIntoKalah) {
+      return player; //same player sows again
+    }
+
+    switch (player) {
+      case A:
+        return Player.B;
+      case B:
+        return Player.A;
+      default:
+        throw new IllegalStateException("Expected either player A or B but was " + player);
+    }
   }
 
   private int putAllStonesAwayFromPit(int pitIndex) {

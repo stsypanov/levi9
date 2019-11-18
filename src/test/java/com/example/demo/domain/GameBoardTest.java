@@ -72,5 +72,31 @@ class GameBoardTest {
     assertEquals(7, state.get(i++).getStoneCount());
     assertEquals(6, state.get(i).getStoneCount());
   }
+  @Test
+  void twoSows() {
+    int playerAIndex = 5;
+    int playerBIndex = 9;
+
+    board.sow(Player.A, playerAIndex);
+    board.sow(Player.B, playerBIndex);
+
+    List<PitState> state = board.getState();
+
+    int i = 0;
+    assertEquals(7, state.get(i++).getStoneCount());
+    assertEquals(7, state.get(i++).getStoneCount());
+    assertEquals(6, state.get(i++).getStoneCount());
+    assertEquals(6, state.get(i++).getStoneCount());
+    assertEquals(0, state.get(i++).getStoneCount());
+    assertEquals(7, state.get(i++).getStoneCount());
+    assertEquals(1, state.get(i++).getStoneCount());
+    assertEquals(7, state.get(i++).getStoneCount());
+    assertEquals(0, state.get(i++).getStoneCount());
+    assertEquals(8, state.get(i++).getStoneCount());
+    assertEquals(8, state.get(i++).getStoneCount());
+    assertEquals(7, state.get(i++).getStoneCount());
+    assertEquals(7, state.get(i++).getStoneCount());
+    assertEquals(1, state.get(i).getStoneCount());
+  }
 
 }

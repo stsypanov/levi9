@@ -8,6 +8,10 @@ public interface HasStones {
     return false;
   }
 
+  default boolean isKalah() {
+    return false;
+  }
+
   default boolean isPit() {
     return true;
   }
