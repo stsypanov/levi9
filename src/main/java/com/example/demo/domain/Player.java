@@ -1,5 +1,5 @@
 package com.example.demo.domain;
 
-enum PlayerTurn {
+enum Player {
   A, B
 }

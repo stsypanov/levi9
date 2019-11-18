@@ -1,17 +1,23 @@
 package com.example.demo.domain;
 
-public class Pit {
-  protected int stoneCount = 6;
+import lombok.Getter;
+import lombok.ToString;
 
+@Getter
+@ToString
+public class Pit implements HasStones {
+  private int stoneCount = 6;
+
+  @Override
   public void addStone() {
     stoneCount++;
   }
 
-  public void removeStone() {
-    stoneCount--;
-  }
-
-  public int getStoneCount() {
+  @Override
+  public int removeAllStones() {
+    final int stoneCount = this.stoneCount;
+    this.stoneCount = 0;
     return stoneCount;
   }
+
 }

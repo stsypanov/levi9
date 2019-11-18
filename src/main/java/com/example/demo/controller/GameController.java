@@ -2,7 +2,6 @@ package com.example.demo.controller;
 
 import com.example.demo.domain.GameState;
 import com.example.demo.domain.PitState;
-import com.example.demo.service.GamePlay;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
