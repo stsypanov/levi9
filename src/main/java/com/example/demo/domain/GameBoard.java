@@ -69,12 +69,12 @@ public class GameBoard {
   }
 
   private void checkIndex(Player turn, int pitIndex) {
-    if (turn == Player.A && pitIndex >= 8) {
+    if (turn == Player.A && pitIndex > 7) {
       throw new IllegalArgumentException("Player A expects indices 1-7, but was " + pitIndex);
     }
 
-    if (turn == Player.B && pitIndex <= 8) {
-      throw new IllegalArgumentException("Player A expects indices 8-14, but was " + pitIndex);
+    if (turn == Player.B && pitIndex < 8) {
+      throw new IllegalArgumentException("Player B expects indices 8-14, but was " + pitIndex);
     }
 
   }

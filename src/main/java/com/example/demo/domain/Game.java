@@ -5,12 +5,12 @@ import java.util.List;
 public class Game {
   private final GameBoard board = new GameBoard();
 
-  private Player turn = Player.A;
+  private Player player = Player.A;
 
-  public List<PitState> makeAMove(int pit) {
+  public List<PitState> sow(int pit) {
     checkPitNumber(pit);
 
-    turn = board.sow(turn, pit);
+    player = board.sow(player, pit);
 
     return board.getState();
   }

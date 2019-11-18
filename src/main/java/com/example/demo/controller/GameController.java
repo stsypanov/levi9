@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.domain.GameState;
 import com.example.demo.domain.PitState;
+import com.example.demo.service.GamePlay;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -40,7 +41,7 @@ public class GameController {
           @PathVariable("pitId") int pitId,
           HttpServletRequest request
   ) {
-    final List<PitState> pitStates = gamePlay.makeAMove(gameId, pitId);
+    final List<PitState> pitStates = gamePlay.sow(gameId, pitId);
     final String uriString = uriProvider.existingGameUri(request, gameId);
     final GameState state = GameState.of(String.valueOf(gameId), uriString, pitStates);
     return ResponseEntity.ok(state);

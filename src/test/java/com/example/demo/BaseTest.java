@@ -4,7 +4,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public abstract class BaseTest {
+class DemoApplicationTests {
 
+	@Test
+	void contextLoads() {
+	}
 
 }
